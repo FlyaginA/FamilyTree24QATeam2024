@@ -7,13 +7,14 @@ using System.Text;
 
 namespace atFrameWork2.PageObjects
 {
-    public class PortalHomePage
+    public class HomePage
     {
+        /*
         public PortalLeftMenu LeftMenu => new PortalLeftMenu();
         public NewsPage NewsPage => new NewsPage();
 
         public MyDrive MyDrive => new MyDrive();
-
+        */
 
         
     }

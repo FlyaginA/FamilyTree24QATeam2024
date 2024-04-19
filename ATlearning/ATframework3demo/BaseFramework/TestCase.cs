@@ -3,7 +3,7 @@ using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
 using ATframework3demo.BaseFramework;
-using ATframework3demo.PageObjects.Mobile;
+
 
 namespace atFrameWork2.BaseFramework
 {
@@ -17,14 +17,14 @@ namespace atFrameWork2.BaseFramework
         /// <param name="title">Название тесткейса</param>
         /// <param name="body">Ссылка на метод тела кейса</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public TestCase(string title, Action<PortalHomePage> body)
+        public TestCase(string title, Action<HomePage> body)
         {
             Title = title ?? throw new ArgumentNullException(nameof(title));
             Body = body ?? throw new ArgumentNullException(nameof(body));
             Node = new TestCaseTreeNode(title);
             EnvType = TestCaseEnvType.Web;
         }
-
+        /*
         public TestCase(string title, Action<MobileHomePage> body)
         {
             Title = title ?? throw new ArgumentNullException(nameof(title));
@@ -32,7 +32,7 @@ namespace atFrameWork2.BaseFramework
             Node = new TestCaseTreeNode(title);
             EnvType = TestCaseEnvType.Mobile;
         }
-
+        */
         int logCounter = 0;
 
         public void Execute(PortalInfo testPortal, Action uiRefresher)
@@ -56,9 +56,11 @@ namespace atFrameWork2.BaseFramework
                 }
                 else
                 {
+                    /*
                     var loginPage = new MobileLoginPage(testPortal);
                     var homePage = loginPage.Login(testPortal.PortalAdmin);
                     MobileBody.Invoke(homePage);
+                    */
                 }
 
             }
@@ -89,8 +91,8 @@ namespace atFrameWork2.BaseFramework
         }
 
         public string Title { get; set; }
-        Action<PortalHomePage> Body { get; set; }
-        Action<MobileHomePage> MobileBody { get; set; }
+        Action<HomePage> Body { get; set; }
+        //Action<MobileHomePage> MobileBody { get; set; }
         public TestCaseTreeNode Node { get; set; }
         public string CaseLogPath { get; set; }
         public List<LogMessage> CaseLog { get; } = new List<LogMessage>();

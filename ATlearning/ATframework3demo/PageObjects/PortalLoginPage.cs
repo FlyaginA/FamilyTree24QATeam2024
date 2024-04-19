@@ -16,16 +16,16 @@ namespace atFrameWork2.PageObjects
         {
         }
 
-        public PortalHomePage Login(User admin)
+        public HomePage Login(User admin)
         {
             WebDriverActions.OpenUri(portalInfo.PortalUri);
-            var loginField = new WebItem("//input[@id='login']", "Поле для ввода логина");
-            var pwdField = new WebItem("//input[@id='password']", "Поле для ввода пароля");
+            var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
+            var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
             loginField.SendKeys(admin.Login);
-            loginField.SendKeys(Keys.Enter);
+            loginField.SendKeys(Keys.Tab);
             pwdField.SendKeys(admin.Password, logInputtedText: false);
             pwdField.SendKeys(Keys.Enter);
-            return new PortalHomePage();
+            return new HomePage();
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace ATframework3demo.TestCases.Web
+namespace ATframework3demo.TestCases
 {
     public class Case_Bitrix24_Tasks : CaseCollectionBuilder
     {
@@ -17,14 +17,18 @@ namespace ATframework3demo.TestCases.Web
         {
             return new List<TestCase>
             {
+                /*
                 new TestCase("Создание задачи", homePage => CreateTask(homePage)),
-                new TestCase("Редактирование задачи", (PortalHomePage homePage) => throw new NotImplementedException("Заглушка теста редактирования задачи")),
-                new TestCase("Удаление задачи", (PortalHomePage homePage) => { Thread.Sleep(5000); Log.Error("kukus"); }),
+                new TestCase("Редактирование задачи", (HomePage homePage) => throw new NotImplementedException("Заглушка теста редактирования задачи")),
+                new TestCase("Удаление задачи", (HomePage homePage) => { Thread.Sleep(5000); Log.Error("kukus"); }),
+                */
             };
         }
 
-        public static void CreateTask(PortalHomePage homePage)
+        public static void CreateTask(HomePage homePage)
         {
+           
+            /*
             //код кейса здорового человека:
             homePage
                 .LeftMenu
@@ -63,6 +67,7 @@ namespace ATframework3demo.TestCases.Web
             var taskDescriptionArea = new WebItem($"//div[@id='task-detail-description']",
                 "Область описания задачи");
             taskDescriptionArea.AssertTextContains(task.Description, "Название задачи отображается неверно");
+            */
         }
     }
 }
