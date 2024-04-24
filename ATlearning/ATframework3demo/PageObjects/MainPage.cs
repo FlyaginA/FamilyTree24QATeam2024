@@ -21,7 +21,7 @@ namespace atFrameWork2.PageObjects
         public bool IsMainPage()
         {
             if (new WebItem("//button [@class = \"button is-success is-rounded button-add-tree\"]",
-                "Кнопка создания нового дерева").WaitElementDisplayed())
+                "Кнопка создания нового дерева").WaitElementDisplayed(2))
             {
                 return true;
             }

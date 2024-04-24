@@ -4,6 +4,7 @@
 
 
 using atFrameWork2.SeleniumFramework;
+using OpenQA.Selenium;
 using System.Xml.Linq;
 
 namespace atFrameWork2.PageObjects
@@ -18,7 +19,9 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public RegistrationPage EnterName(string name)
         {
-            new WebItem("//input[@name = \"USER_NAME\"]", "Поле для ввода имени").SendKeys(name);
+            WebItem field = new WebItem("//input[@name = \"USER_NAME\"]", "Поле для ввода имени");
+            field.ClearValue();
+            field.SendKeys(name);
             return this;
         }
         /// <summary>
@@ -28,7 +31,10 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public RegistrationPage EnterSurname(string surname)
         {
-            new WebItem("//input[@name = \"USER_LAST_NAME\"]", "Поле для ввода фамилии").SendKeys(surname);
+            WebItem field = new WebItem("//input[@name = \"USER_LAST_NAME\"]", "Поле для ввода фамилии");
+            field.ClearValue();
+            field.SendKeys(surname);
+
             return this;
         }
         /// <summary>
@@ -38,7 +44,9 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public RegistrationPage EnterLogin(string login)
         {
-            new WebItem("//input[@name = \"USER_LOGIN\"]", "Поле для ввода логина").SendKeys(login);
+            WebItem field = new WebItem("//input[@name = \"USER_LOGIN\"]", "Поле для ввода логина");
+            field.ClearValue();
+            field.SendKeys(login);
             return this;
         }
         /// <summary>
@@ -48,7 +56,9 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public RegistrationPage EnterPassword(string password)
         {
-            new WebItem("//input[@name = \"USER_PASSWORD\"]", "Поле для ввода пароля").SendKeys(password);
+            WebItem field = new WebItem("//input[@name = \"USER_PASSWORD\"]", "Поле для ввода пароля");
+            field.ClearValue();
+            field.SendKeys(password);
             return this;
         }
 

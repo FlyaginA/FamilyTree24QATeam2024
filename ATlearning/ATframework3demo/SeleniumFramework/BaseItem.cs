@@ -109,6 +109,8 @@ namespace atFrameWork2.SeleniumFramework
             Execute((input, drv) => { input.SendKeys(textToInput); }, driver);
             Waiters.StaticWait_s(DefaultWaitAfterActiveAction_s);
         }
+       
+        
 
         protected void Execute(Action<IWebElement, IWebDriver> seleniumCode, IWebDriver driver, bool throwAtDebug = false)
         {

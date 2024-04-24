@@ -144,8 +144,22 @@ namespace atFrameWork2.SeleniumFramework
             PrintActionInfo($"Получен текст '{elementText}'. Элемент");
             return elementText;
         }
-        
 
+        /// <summary>
+        /// Стирает значение атрибута value
+        /// </summary>
+        /// <param name="seleniumCode"></param>
+        /// <param name="driver"></param>
+        /// <param name="throwAtDebug"></param>
+        public WebItem ClearValue(string atribute = "value")
+        {
+            if(GetAttribute(atribute).Length > 0)
+            { 
+                SendKeys(Keys.Control+'A'+ Keys.Backspace);
+            }
+            return this;
+        }
+        
         /// <summary>
         /// Ждёт пока элемент перестанет отображаться на странице
         /// </summary>
@@ -173,5 +187,6 @@ namespace atFrameWork2.SeleniumFramework
                 PrintActionInfo($"Получен размер '{elementSize}'. Элемент");
             return elementSize;
         }
+
     }
 }

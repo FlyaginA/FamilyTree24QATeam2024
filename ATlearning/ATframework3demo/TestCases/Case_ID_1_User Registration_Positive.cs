@@ -31,14 +31,16 @@ namespace ATframework3demo.TestCases
         };
         /// <summary>
         /// TestCase#1
-        /// Регистрация пользователей
+        /// Регистрация пользователей (позитивный кейс)
+        /// Предварительные условия:
+        /// Проверить отсутствие в базе данных строк, совпадающих с набором данных			
         /// </summary>
         /// <param name="homePage"></param>
 
 
         public static void Registration(ServiceHomePage homePage) 
         {
-            foreach (var i in Case_ID_1_User_Registration_Positive.TestData)
+            foreach (var i in TestData)
             {
                 if (
                     homePage
@@ -66,19 +68,12 @@ namespace ATframework3demo.TestCases
                 }
                 else
                 {
-                    Log.Error($"Round {i[0]}: Fail ");
+                    Log.Error($"Round {i[0]}: Fail " +
+                        $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                     return;
                 }
 
             }
-                    
-
-
-
-
-
-
-
         }
 
     }
