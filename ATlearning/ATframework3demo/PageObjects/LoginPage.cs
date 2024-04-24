@@ -10,13 +10,18 @@ using ATframework3demo.PageObjects;
 
 namespace atFrameWork2.PageObjects
 {
-    class PortalLoginPage : BaseLoginPage
+    public class LoginPage : BaseLoginPage
     {
-        public PortalLoginPage(PortalInfo portal):base(portal)
+
+        public LoginPage(PortalInfo portal = null):base(portal)
         {
         }
-
-        public HomePage Login(User admin)
+        /// <summary>
+        /// Вход на ресурс
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
+        public ServiceHomePage Login(User admin)
         {
             WebDriverActions.OpenUri(portalInfo.PortalUri);
             var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
@@ -25,7 +30,16 @@ namespace atFrameWork2.PageObjects
             loginField.SendKeys(Keys.Tab);
             pwdField.SendKeys(admin.Password, logInputtedText: false);
             pwdField.SendKeys(Keys.Enter);
-            return new HomePage();
+            return new ServiceHomePage();
+        }
+        /// <summary>
+        /// Открытие формы регистрации
+        /// </summary>
+        /// <returns></returns>
+        public RegistrationPage OpenRegistrationForm()
+        {
+            new WebItem("//a[text()=\"Зарегистрироваться\"]", "Открытие формы регистрации").Click();
+            return new RegistrationPage();
         }
     }
 }

@@ -3,7 +3,6 @@ using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
 using ATframework3demo.BaseFramework;
-using ATframework3demo.PageObjects.Mobile;
 
 namespace atFrameWork2.BaseFramework
 {
@@ -17,7 +16,7 @@ namespace atFrameWork2.BaseFramework
         /// <param name="title">Название тесткейса</param>
         /// <param name="body">Ссылка на метод тела кейса</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public TestCase(string title, Action<PortalHomePage> body)
+        public TestCase(string title, Action<ServiceHomePage> body)
         {
             Title = title ?? throw new ArgumentNullException(nameof(title));
             Body = body ?? throw new ArgumentNullException(nameof(body));
@@ -50,7 +49,7 @@ namespace atFrameWork2.BaseFramework
                 Log.Info($"---------------Запуск кейса '{Title}'---------------");
                 if (EnvType == TestCaseEnvType.Web)
                 {
-                    var portalLoginPage = new PortalLoginPage(testPortal);
+                    var portalLoginPage = new LoginPage(testPortal);
                     var homePage = portalLoginPage.Login(testPortal.PortalAdmin);
                     Body.Invoke(homePage);
                 }
@@ -89,7 +88,7 @@ namespace atFrameWork2.BaseFramework
         }
 
         public string Title { get; set; }
-        Action<PortalHomePage> Body { get; set; }
+        Action<ServiceHomePage> Body { get; set; }
         Action<MobileHomePage> MobileBody { get; set; }
         public TestCaseTreeNode Node { get; set; }
         public string CaseLogPath { get; set; }
