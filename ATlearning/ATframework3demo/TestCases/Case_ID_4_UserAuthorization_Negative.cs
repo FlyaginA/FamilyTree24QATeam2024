@@ -25,9 +25,9 @@ namespace ATframework3demo.TestCases
             new User(new List<string>() { "5", "", "", "User2024", "VeryLongPasswordThatExceedsTheMaximumAllowedLimitVeryLongPasswordThatExceedsTheMaximumAllowedLimit" }),
         };
         /// <summary>
+        /// Flyagin
         /// TestCase #4
         /// Авторизация пользователей(Negative)
-        /// 
         /// </summary>
         /// <param name="homePage"></param>
         public static void Authorization(ServiceHomePage homePage)
