@@ -15,19 +15,21 @@ namespace ATframework3demo.TestCases
             return caseCollection;
         }
 
-        private static List<List<string>> TestData = new List<List<string>>()
+        private static List<User> TestData = new List<User>
         {
-            new List<string>() { "1", "Иван", "Иванов", "User123", "mypassword123" },
-            new List<string>() { "2", "John Doe", "Петров", "tech_demo", "technology2024" },
-            new List<string>() { "3", "Анна", "Сергеев", "TestUser", "ComplexPassword99" },
-            new List<string>() { "4", "JohnИванDoe", "Алексеева", "sample_login", "complex_password_sample" },
-            new List<string>() { "5", "Саша.Александров", "Кузнецова", "Sasha_A2024", "SAlex@1234" },
-            new List<string>() { "6", "UserИмя2024", "Александров", "User2024", "UserpAssword24!" },
-            new List<string>() { "7", "Иван_Иванович", "Макеев", "Ivan_Iv2024", "Pass@Word!2424" },
-            new List<string>() { "8", "JohnИван.Doe", "Миронова", "Jo_Iv_Doe50", "Pa$SworD5024!" },
-            new List<string>() { "9", "Иван.Ivan50", "Жуковский", "Ivan_iv202402", "ivanpA$sworD504!" },
-            new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "Name_Resources2024", "PasswordRsrc24#" }
+            new User(new List<string>() { "1", "Иван", "Иванов", "User123", "mypassword123" }),
+            new User(new List<string>() { "2", "John Doe", "Петров", "tech_demo", "technology2024" }),
+            new User(new List<string>() { "3", "Анна", "Сергеев", "TestUser", "ComplexPassword99" }),
+            new User(new List<string>() { "4", "JohnИванDoe", "Алексеева", "sample_login", "complex_password_sample" }),
+            new User(new List<string>() { "5", "Саша.Александров", "Кузнецова", "Sasha_A2024", "SAlex@1234" }),
+            new User(new List<string>() { "6", "UserИмя2024", "Александров", "User2024", "UserpAssword24!" }),
+            new User(new List<string>() { "7", "Иван_Иванович", "Макеев", "Ivan_Iv2024", "Pass@Word!2424" }),
+            new User(new List<string>() { "8", "JohnИван.Doe", "Миронова", "Jo_Iv_Doe50", "Pa$SworD5024!" }),
+            new User(new List<string>() { "9", "Иван.Ivan50", "Жуковский", "Ivan_iv202402", "ivanpA$sworD504!" }),
+            new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "Name_Resources2024", "PasswordRsrc24#" })
         };
+
+
         /// <summary>
         /// TestCase #3
         /// Авторизация пользователей.
@@ -48,11 +50,11 @@ namespace ATframework3demo.TestCases
                     .IsMainPage()
                     )
                 {
-                    Log.Info($"Round {i[0]}: Success ");
+                    Log.Info($"Round {i.Id}: Success ");
                 }
                 else
                 {
-                    Log.Error($"Round {i[0]}: Fail " +
+                    Log.Error($"Round {i.Id}: Fail " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                     return;
                 }

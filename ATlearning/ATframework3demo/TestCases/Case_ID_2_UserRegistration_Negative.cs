@@ -2,6 +2,7 @@
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
+using atFrameWork2.TestEntities;
 
 namespace ATframework3demo.TestCases
 {
@@ -13,14 +14,14 @@ namespace ATframework3demo.TestCases
             caseCollection.Add(new TestCase("ID_2_Регистрация(Negative)", homePage => Registration(homePage)));
             return caseCollection;
         }
-        private static List<List<string>> TestData = new List<List<string>>()
+        private static List<User> TestData = new List<User>()
         {
-            new List<string>() { "1", "", "", "AA", "12345" },
-            new List<string>() { "2", "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "", "BB", "123456" },
-            new List<string>() { "3", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "ВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВ", "D", "E" },
-            new List<string>() { "4", "ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТ", "", "S", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" },
-            new List<string>() { "5", "", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "SS", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" },
-            new List<string>() { "6", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "", "EEEEEE" }
+            new User(new List<string>() { "1", "", "", "AA", "12345" }),
+            new User(new List<string>() { "2", "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "", "BB", "123456" }),
+            new User(new List<string>() { "3", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "ВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВВ", "D", "E" }),
+            new User(new List<string>() { "4", "ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТ", "", "S", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "5", "", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "SS", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "6", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "", "EEEEEE" })
         };
         /// <summary>
         /// TestCase#2
@@ -41,13 +42,13 @@ namespace ATframework3demo.TestCases
             {
                 if (!ThisScreen
                         //Ввод Имени
-                        .EnterName(i[1])
+                        .EnterName(i.Name)
                         //Ввод Фамилии
-                        .EnterSurname(i[2])
+                        .EnterSurname(i.Surname)
                         //Ввод Логина
-                        .EnterLogin(i[3])
+                        .EnterLogin(i.Login)
                         //Ввод Пароля
-                        .EnterPassword(i[4])
+                        .EnterPassword(i.Password)
                         //Нажатие на кнопку регистрации
                         .RegistrationButton()
                         //проверка что регистрация прошла успешно и мы находимся
@@ -55,13 +56,13 @@ namespace ATframework3demo.TestCases
                         .IsMainPage()
                     )
                 {
-                    Log.Info($"Round {i[0]}: Success " +
+                    Log.Info($"Round {i.Id}: Success " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                 }
                 else
                 {
                     
-                    Log.Error($"Round {i[0]}: Fail \n Сurrent Data: {string.Join("; ", i)} ");
+                    Log.Error($"Round {i.Id}: Fail \n Сurrent Data: {string.Join("; ", i)} ");
                     return;
                 }
 

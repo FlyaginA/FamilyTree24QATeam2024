@@ -6,6 +6,10 @@ using System.Text;
 
 namespace atFrameWork2.PageObjects
 {
+    /// <summary>
+    /// абстрактная страница исходной страницы.
+    /// От сюда переключаемся сразу на заглавную страницу
+    /// </summary>
     public class ServiceHomePage
     {
         public MainPage mainPage => new MainPage();
