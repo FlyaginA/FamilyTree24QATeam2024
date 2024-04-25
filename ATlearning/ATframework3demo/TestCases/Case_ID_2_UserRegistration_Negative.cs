@@ -24,6 +24,7 @@ namespace ATframework3demo.TestCases
             new User(new List<string>() { "6", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "", "EEEEEE" })
         };
         /// <summary>
+        /// Flyagin
         /// TestCase#2
         /// Регистрация пользователей (негативный кейс)
         /// Предварительные условия:

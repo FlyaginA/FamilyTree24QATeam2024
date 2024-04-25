@@ -31,6 +31,7 @@ namespace ATframework3demo.TestCases
 
 
         /// <summary>
+        /// Flyagin
         /// TestCase #3
         /// Авторизация пользователей.
         /// Предварительные условия:

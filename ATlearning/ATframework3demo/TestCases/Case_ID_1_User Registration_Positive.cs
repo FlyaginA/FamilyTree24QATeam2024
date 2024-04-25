@@ -31,6 +31,7 @@ namespace ATframework3demo.TestCases
             new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "Name_Resources2024", "PasswordRsrc24#" })
         };
         /// <summary>
+        /// Flyagin
         /// TestCase#1
         /// Регистрация пользователей (позитивный кейс)
         /// Предварительные условия:
