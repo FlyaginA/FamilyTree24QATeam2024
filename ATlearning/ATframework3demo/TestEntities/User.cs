@@ -11,13 +11,13 @@
             this.Id = userData[0];
             this.Name = userData[1];
             this.Surname = userData[2];
-            this.Login = userData[3];
+            this.eMail = userData[3];
             this.Password = userData[4];
         }
         
     }
 
-    public string Login { get; set; }
+    public string eMail { get; set; }
     public string Password { get; set; }
     public string Id { get; set; }
     public string Name { get; set; }

@@ -29,7 +29,7 @@ namespace atFrameWork2.PageObjects
             var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
             var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
             loginField.ClearValue();
-            loginField.SendKeys(admin.Login);
+            loginField.SendKeys(admin.eMail);
             loginField.SendKeys(Keys.Tab);
             pwdField.ClearValue();
             pwdField.SendKeys(admin.Password, logInputtedText: false);
@@ -55,7 +55,7 @@ namespace atFrameWork2.PageObjects
             var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
             var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
             loginField.ClearValue();
-            loginField.SendKeys(user.Login);
+            loginField.SendKeys(user.eMail);
             loginField.SendKeys(Keys.Tab);
             pwdField.ClearValue();
             pwdField.SendKeys(user.Password);

@@ -42,13 +42,13 @@ namespace ATframework3demo.Pages.TestRunPage
             Uri portalUri = default;
             if (string.IsNullOrEmpty(PortalUri) || !Uri.TryCreate(PortalUri, UriKind.Absolute, out portalUri))
                 PortalUriBgColor = HelperMethods.GetHexColor(Color.Red);
-            else if (string.IsNullOrEmpty(PortalUser.Login))
+            else if (string.IsNullOrEmpty(PortalUser.eMail))
                 LoginBgColor = HelperMethods.GetHexColor(Color.Red);
             else if (string.IsNullOrEmpty(PortalUser.Password))
                 PwdBgColor = HelperMethods.GetHexColor(Color.Red);
             else
             {
-                File.WriteAllText(configFileName, $"{PortalUri}\r\n{PortalUser.Login}\r\n{PortalUser.Password}");
+                File.WriteAllText(configFileName, $"{PortalUri}\r\n{PortalUser.eMail}\r\n{PortalUser.Password}");
                 var selectedCases = CaseCollection.FindAll(x => x.Node.IsChecked);
                 
                 if (selectedCases.Any())
@@ -89,7 +89,7 @@ namespace ATframework3demo.Pages.TestRunPage
                     if(parts.Count() > 2)
                     {
                         PortalUri = parts[0];
-                        PortalUser.Login = parts[1];
+                        PortalUser.eMail = parts[1];
                         PortalUser.Password = parts[2];
                     }
                 }
