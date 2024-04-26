@@ -7,7 +7,7 @@ using ATframework3demo.PageObjects;
 
 namespace ATframework3demo.TestCases
 {
-    public class Case_ID_1_User_Registration_Positive : CaseCollectionBuilder
+    public class Case_ID_1_PrepeareToTest : CaseCollectionBuilder
     {
         
         protected override List<TestCase> GetCases()
@@ -31,7 +31,7 @@ namespace ATframework3demo.TestCases
             new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "Name_Resources2024", "PasswordRsrc24#" })
         };
         /// <summary>
-        /// Flyagin
+        /// Author:Flyagin
         /// TestCase#1
         /// Регистрация пользователей (позитивный кейс)
         /// Предварительные условия:

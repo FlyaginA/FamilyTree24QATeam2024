@@ -4,7 +4,7 @@ using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
 
-namespace ATframework3demo.TestCases
+namespace ATframework3demo.TestCases.Login
 {
     public class Case_ID_4_UserAuthorization_Negative : CaseCollectionBuilder
     {
@@ -25,7 +25,7 @@ namespace ATframework3demo.TestCases
             new User(new List<string>() { "5", "", "", "User2024", "VeryLongPasswordThatExceedsTheMaximumAllowedLimitVeryLongPasswordThatExceedsTheMaximumAllowedLimit" }),
         };
         /// <summary>
-        /// Flyagin
+        /// Author:Flyagin
         /// TestCase #4
         /// Авторизация пользователей(Negative)
         /// </summary>
@@ -38,8 +38,8 @@ namespace ATframework3demo.TestCases
 
             foreach (var i in TestData)
             {
-                
-                if (ThisScreen                
+
+                if (ThisScreen
                     .TestLogIn(i)
                     .mainPage
                     .IsMainPage()
@@ -48,7 +48,7 @@ namespace ATframework3demo.TestCases
                     Log.Error($"Round {i.Id}: Fail " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                     return;
-                    
+
                 }
                 else
                 {
