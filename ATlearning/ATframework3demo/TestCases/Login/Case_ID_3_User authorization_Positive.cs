@@ -4,9 +4,9 @@ using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
 
-namespace ATframework3demo.TestCases
+namespace ATframework3demo.TestCases.Login
 {
-    public class Case_ID_1_User_authorization : CaseCollectionBuilder
+    public class Case_ID_3_User_authorization : CaseCollectionBuilder
     {
         protected override List<TestCase> GetCases()
         {
@@ -31,7 +31,7 @@ namespace ATframework3demo.TestCases
 
 
         /// <summary>
-        /// Flyagin
+        /// Author:Flyagin
         /// TestCase #3
         /// Авторизация пользователей.
         /// Предварительные условия:
@@ -39,10 +39,10 @@ namespace ATframework3demo.TestCases
         /// </summary>
         /// <param name="homePage"></param>
         public static void Authorization(ServiceHomePage homePage)
+        {
+            foreach (var i in TestData)
             {
-            foreach(var i in TestData)
-            {
-                if(
+                if (
                 homePage
                     .mainPage
                     .LogOut()
