@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var testCase in CaseCollection.OrderBy(testCase => testCase.Title))
+        @foreach (var testCase in CaseCollection.OrderBy(testCase => testCase.EnvType))
         {
             <tr>
                 <td>
