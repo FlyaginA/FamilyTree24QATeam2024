@@ -22,6 +22,16 @@ namespace atFrameWork2.BaseFramework
             Body = body ?? throw new ArgumentNullException(nameof(body));
             Node = new TestCaseTreeNode(title);
             EnvType = TestCaseEnvType.Web;
+            string[] parts = Title.Split('_');
+            try 
+            {
+                ID = int.Parse(parts[1]);
+            }
+            catch
+            {
+                Log.Error("Error Parse ID");
+                throw new ArgumentException("Title does not contain a valid ID");
+            }
         }
 
         public TestCase(string title, Action<MobileHomePage> body)
@@ -88,6 +98,7 @@ namespace atFrameWork2.BaseFramework
         }
 
         public string Title { get; set; }
+        public int ID {  get; set; } 
         Action<ServiceHomePage> Body { get; set; }
         Action<MobileHomePage> MobileBody { get; set; }
         public TestCaseTreeNode Node { get; set; }

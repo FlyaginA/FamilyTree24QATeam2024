@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var testCase in CaseCollection.OrderBy(testCase => testCase.EnvType))
+        @foreach (var testCase in CaseCollection.OrderBy(testCase => testCase.ID))
         {
             <tr>
                 <td>
@@ -31,7 +31,7 @@
                         {
                             badgeType += "success";
                         }
-                        else if (testCase.Status == TestCaseStatus.running)
+                        else if (testCase.Status == TestCaseStatus.running) 
                         {
                             badgeType += "primary";
                         }
