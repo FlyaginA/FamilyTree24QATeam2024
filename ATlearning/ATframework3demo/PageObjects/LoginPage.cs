@@ -23,21 +23,27 @@ namespace atFrameWork2.PageObjects
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
+        public ServiceHomePage OpenService(User admin)
+        { 
+            WebDriverActions.OpenUri(portalInfo.PortalUri);
+            var ServiceHome = Login(admin);
+            return ServiceHome;
+        }
+       
         public ServiceHomePage Login(User admin)
         {
-            WebDriverActions.OpenUri(portalInfo.PortalUri);
-            var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
+            var emailField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
             var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
-            loginField.ClearValue();
-            loginField.SendKeys(admin.eMail);
-            loginField.SendKeys(Keys.Tab);
+            emailField.ClearValue();
+            emailField.SendKeys(admin.eMail);
+            emailField.SendKeys(Keys.Tab);
             pwdField.ClearValue();
             pwdField.SendKeys(admin.Password, logInputtedText: false);
             pwdField.SendKeys(Keys.Enter);
             return new ServiceHomePage();
         }
         /// <summary>
-        /// Открытие формы регистрации
+        /// Открытие формы  
         /// </summary>
         /// <returns></returns>
         public RegistrationPage OpenRegistrationForm()
@@ -45,22 +51,7 @@ namespace atFrameWork2.PageObjects
             new WebItem("//a[text()=\"Зарегистрироваться\"]", "Открытие формы регистрации").Click();
             return new RegistrationPage();
         }
-        /// <summary>
-        /// Вход на ресурс для тестирования полей авторизации
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public ServiceHomePage TestLogIn(User user)
-        {
-            var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");
-            var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
-            loginField.ClearValue();
-            loginField.SendKeys(user.eMail);
-            loginField.SendKeys(Keys.Tab);
-            pwdField.ClearValue();
-            pwdField.SendKeys(user.Password);
-            pwdField.SendKeys(Keys.Enter);
-            return new ServiceHomePage();
-        }
+
+
     }
 }

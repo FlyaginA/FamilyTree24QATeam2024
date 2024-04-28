@@ -40,7 +40,7 @@ namespace ATframework3demo.TestCases.Login
             {
 
                 if (ThisScreen
-                    .TestLogIn(i)
+                    .Login(i)
                     .mainPage
                     .IsMainPage()
                     )

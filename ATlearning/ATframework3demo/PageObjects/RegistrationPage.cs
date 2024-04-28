@@ -44,7 +44,7 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public RegistrationPage EnterLogin(string login)
         {
-            WebItem field = new WebItem("//input[@name = \"USER_LOGIN\"]", "Поле для ввода логина");
+            WebItem field = new WebItem("//input[@name = \"USER_EMAIL\"]", "Поле для ввода логина");
             field.ClearValue();
             field.SendKeys(login);
             return this;

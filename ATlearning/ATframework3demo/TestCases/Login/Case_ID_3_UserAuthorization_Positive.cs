@@ -17,16 +17,16 @@ namespace ATframework3demo.TestCases.Login
 
         private static List<User> TestData = new List<User>
         {
-            new User(new List<string>() { "1", "Иван", "Иванов", "User123", "mypassword123" }),
-            new User(new List<string>() { "2", "John Doe", "Петров", "tech_demo", "technology2024" }),
-            new User(new List<string>() { "3", "Анна", "Сергеев", "TestUser", "ComplexPassword99" }),
-            new User(new List<string>() { "4", "JohnИванDoe", "Алексеева", "sample_login", "complex_password_sample" }),
-            new User(new List<string>() { "5", "Саша.Александров", "Кузнецова", "Sasha_A2024", "SAlex@1234" }),
-            new User(new List<string>() { "6", "UserИмя2024", "Александров", "User2024", "UserpAssword24!" }),
-            new User(new List<string>() { "7", "Иван_Иванович", "Макеев", "Ivan_Iv2024", "Pass@Word!2424" }),
-            new User(new List<string>() { "8", "JohnИван.Doe", "Миронова", "Jo_Iv_Doe50", "Pa$SworD5024!" }),
-            new User(new List<string>() { "9", "Иван.Ivan50", "Жуковский", "Ivan_iv202402", "ivanpA$sworD504!" }),
-            new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "Name_Resources2024", "PasswordRsrc24#" })
+            new User(new List<string>() { "1", "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
+            new User(new List<string>() { "2", "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
+            new User(new List<string>() { "3", "Анна", "Сергеев", "dataCheck3@inbox.org", "ComplexPassword99" }),
+            new User(new List<string>() { "4", "JohnИванDoe", "Алексеева", "validationSample4@test.me", "complex_password_sample" }),
+            new User(new List<string>() { "5", "Саша.Александров", "Кузнецова", "fieldEntry5@site.io", "SAlex@1234" }),
+            new User(new List<string>() { "6", "UserИмя2024", "Александров", "randomUser6@web.com", "UserpAssword24!" }),
+            new User(new List<string>() { "7", "Иван_Иванович", "Макеев", "emailTest7@check.edu", "Pass@Word!2424" }),
+            new User(new List<string>() { "8", "JohnИван.Doe", "Миронова", "testingField8@sample.org", "Pa$SworD5024!" }),
+            new User(new List<string>() { "9", "Иван.Ivan50", "Жуковский", "userInput9@mail.net", "ivanpA$sworD504!" }),
+            new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "validation10@example.com", "PasswordRsrc24#" })
         };
 
 
@@ -46,7 +46,7 @@ namespace ATframework3demo.TestCases.Login
                 homePage
                     .mainPage
                     .LogOut()
-                    .TestLogIn(i)
+                    .Login(i)
                     .mainPage
                     .IsMainPage()
                     )
