@@ -1,6 +1,7 @@
 ﻿using atFrameWork2.BaseFramework;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
+using ATframework3demo.PageObjects.HomePage;
 using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.MainPage

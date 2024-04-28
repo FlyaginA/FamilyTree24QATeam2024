@@ -63,14 +63,14 @@ namespace atFrameWork2.PageObjects
         public MainPage ClickButtonAddNewTree()
         {
             var button = new WebItem("//button[@id =\"addTreeButton\"]", "Кнопка добавления деревьев");
-            if (button.WaitElementDisplayed(2)) 
-                {
-                button.Click();
-                }
-            
+            button.Click();         
             return this;
         }
-
+        /// <summary>
+        /// Проверка сщуествования дерева на экране
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <returns></returns>
         public bool TreeIsExist(TreeItem tree)
         {
             if (new WebItem(tree.Xpath,$"карточка дерева{tree.Title}").WaitElementDisplayed(2))
@@ -78,6 +78,11 @@ namespace atFrameWork2.PageObjects
                 return true;
             }    
             else { return false; }
+        }
+
+        public TreeItem ChooseTree(TreeItem testTree)
+        {
+            return testTree;
         }
     }
 }

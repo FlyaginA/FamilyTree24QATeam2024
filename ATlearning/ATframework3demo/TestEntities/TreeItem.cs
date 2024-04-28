@@ -1,4 +1,5 @@
-﻿using System.Xml.XPath;
+﻿using ATframework3demo.PageObjects.TreePage;
+using System.Xml.XPath;
 
 namespace ATframework3demo.TestEntities
 {
@@ -13,9 +14,19 @@ namespace ATframework3demo.TestEntities
             this.Xpath = $"//a [@class =\"card-header-title\" and text()=\"{title}\"]" +
                 //карточка дерева
                 $" //ancestor::div[@class=\"card\"] ";
+
         }
 
         public string Xpath { get; }
         public string Title { get; }
+        /// <summary>
+        /// Открывает страницу дерева
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public TreeEditPage Open()
+        {
+            return new TreeEditPage();
+        }
     }
 }
