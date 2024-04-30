@@ -1,4 +1,5 @@
 ﻿using atFrameWork2.BaseFramework;
+using atFrameWork2.BaseFramework.LogTools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -9,8 +10,10 @@ namespace atFrameWork2.SeleniumFramework
 {
     public class WebItem : BaseItem
     {
+
         public WebItem(string xpathLocator, string description) : this(new List<string> {xpathLocator}, description)
         {
+            XPathLocator = xpathLocator;
         }
 
         public WebItem(List<string> xpathLocators, string description) : base(xpathLocators, description)
@@ -18,7 +21,8 @@ namespace atFrameWork2.SeleniumFramework
             XPathLocators = xpathLocators;
             Description = description;
         }
-        
+
+        public string XPathLocator { get; set; }
         /// <summary>
         /// Наведение курсора на объект
         /// </summary>
@@ -126,6 +130,11 @@ namespace atFrameWork2.SeleniumFramework
                 string factText = targetElement.Text;
                 result = !string.IsNullOrEmpty(factText) && factText.Contains(expectedText);
             }, driver);
+
+            if (!result )
+            {
+                Log.Error(failMessage);
+            }
 
             return result;
         }

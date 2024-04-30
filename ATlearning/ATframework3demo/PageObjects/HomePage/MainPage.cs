@@ -73,7 +73,7 @@ namespace atFrameWork2.PageObjects
         /// <returns></returns>
         public bool TreeIsExist(TreeItem tree)
         {
-            if (new WebItem(tree.Xpath,$"карточка дерева{tree.Title}").WaitElementDisplayed(2))
+            if (tree.Card.WaitElementDisplayed(2))
             {
                 return true;
             }    

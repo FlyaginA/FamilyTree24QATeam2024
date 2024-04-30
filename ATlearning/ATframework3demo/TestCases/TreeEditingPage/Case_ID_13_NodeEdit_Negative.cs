@@ -1,31 +1,20 @@
-﻿
-using atFrameWork2.BaseFramework;
+﻿using atFrameWork2.BaseFramework;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
-using ATframework3demo.PageObjects.HomePage;
 using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.TreeEditingPage
 {
-    public class Case_ID_12_NodeEdit_Positive : CaseCollectionBuilder
+    public class Case_ID_13_NodeEdit_Negative : CaseCollectionBuilder
     {
-
-
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_12_Редактирование нод(Positive)", (ServiceHomePage HomePage) => NodeEditPositive(HomePage)));
+            caseCollection.Add(new TestCase("ID_13_Редактирование нод(Negative)", (ServiceHomePage HomePage) => NodeEditNegative(HomePage)));
             return caseCollection;
         }
 
-        
-        /// <summary>
-        /// Flyagin
-        /// Case ID 12
-        /// Редактирование нод(Positive)
-        /// </summary>
-        /// <param name="homePage"></param>
-        public void NodeEditPositive(ServiceHomePage homePage)
+        public void NodeEditNegative(ServiceHomePage homePage)
         {
             List<NodeItem> TestData = new List<NodeItem>
             {
@@ -85,12 +74,13 @@ namespace ATframework3demo.TestCases.TreeEditingPage
                     .AssertNodeItemInfo(Node)
                     )
                 {
-                    Log.Info($"Log.Info($\"Round {i}: Success \");");
+                    Log.Error($"Round {i}: Fail \n Сurrent Data: {string.Join("; ", TestData)} ");
+                    return;
                 }
                 else
                 {
-                    Log.Error($"Round {i}: Fail \n Сurrent Data: {string.Join("; ", TestData)} ");
-                    return;
+                    Log.Info($"Log.Info($\"Round {i}: Success \");");
+                    
                 }
                 //подготовка к следующему кругу
                 //Открытие редактора ноды для следующей проверки
