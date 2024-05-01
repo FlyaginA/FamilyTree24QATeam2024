@@ -31,16 +31,7 @@ namespace atFrameWork2.PageObjects
         }
 
 
-        /// <summary>
-        /// Функция выхода из профиля
-        /// </summary>
-        /// <returns></returns>
-        public LoginPage LogOut()
-        {
-            new WebItem("//a [@id =\"logout\"]", "Кнопка выхода из аккаунта").Click();
-            return new LoginPage();
-        }
-
+        
         /// <summary>
         /// Введение текста в поле "enter a tree name"
         /// </summary>

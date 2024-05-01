@@ -20,16 +20,16 @@ namespace ATframework3demo.TestCases
 
         private static List<User> TestData = new List<User>
         {
-            new User(new List<string>() { "1", "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
-            new User(new List<string>() { "2", "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
-            new User(new List<string>() { "3", "Анна", "Сергеев", "dataCheck3@inbox.org", "ComplexPassword99" }),
-            new User(new List<string>() { "4", "JohnИванDoe", "Алексеева", "validationSample4@test.me", "complex_password_sample" }),
-            new User(new List<string>() { "5", "Саша.Александров", "Кузнецова", "fieldEntry5@site.io", "SAlex@1234" }),
-            new User(new List<string>() { "6", "UserИмя2024", "Александров", "randomUser6@web.com", "UserpAssword24!" }),
-            new User(new List<string>() { "7", "Иван_Иванович", "Макеев", "emailTest7@check.edu", "Pass@Word!2424" }),
-            new User(new List<string>() { "8", "JohnИван.Doe", "Миронова", "testingField8@sample.org", "Pa$SworD5024!" }),
-            new User(new List<string>() { "9", "Иван.Ivan50", "Жуковский", "userInput9@mail.net", "ivanpA$sworD504!" }),
-            new User(new List<string>() { "10", "Имя2024.Имя2024", "Константинопольский", "validation10@example.com", "PasswordRsrc24#" })
+            new User(new List<string>() {  "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
+            new User(new List<string>() {  "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
+            new User(new List<string>() {  "Анна", "Сергеев", "dataCheck3@inbox.org", "ComplexPassword99" }),
+            new User(new List<string>() {  "JohnИванDoe", "Алексеева", "validationSample4@test.me", "complex_password_sample" }),
+            new User(new List<string>() { "Саша.Александров", "Кузнецова", "fieldEntry5@site.io", "SAlex@1234" }),
+            new User(new List<string>() { "UserИмя2024", "Александров", "randomUser6@web.com", "UserpAssword24!" }),
+            new User(new List<string>() { "Иван_Иванович", "Макеев", "emailTest7@check.edu", "Pass@Word!2424" }),
+            new User(new List<string>() { "JohnИван.Doe", "Миронова", "testingField8@sample.org", "Pa$SworD5024!" }),
+            new User(new List<string>() { "Иван.Ivan50", "Жуковский", "userInput9@mail.net", "ivanpA$sworD504!" }),
+            new User(new List<string>() { "Имя2024.Имя2024", "Константинопольский", "validation10@example.com", "PasswordRsrc24#" })
         };
         /// <summary>
         /// Author:Flyagin
@@ -43,11 +43,13 @@ namespace ATframework3demo.TestCases
 
         public static void Registration(ServiceHomePage homePage) 
         {
+            int iterator = 0;
             foreach (var i in TestData)
             {
+                iterator ++;
                 if (
                     homePage
-                        .mainPage
+                        .leftmenu
                         //выход из профиля
                         .LogOut()
                         //переход в форму регистрации
@@ -67,11 +69,11 @@ namespace ATframework3demo.TestCases
                         .IsMainPage()
                     )
                 {
-                    Log.Info($"Round {i.Id}: Success ");
+                    Log.Info($"Round {iterator}: Success ");
                 }
                 else
                 {
-                    Log.Error($"Round {i.Id}: Fail " +
+                    Log.Error($"Round {iterator}: Fail " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                     return;
                 }

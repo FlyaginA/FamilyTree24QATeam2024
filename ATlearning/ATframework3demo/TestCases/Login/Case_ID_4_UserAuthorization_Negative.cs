@@ -18,13 +18,15 @@ namespace ATframework3demo.TestCases.Login
 
         private static List<User> TestData = new List<User>()
         {
-            new User(new List<string>() { "1", "", "", "Te", "TechPassword" }),
-            new User(new List<string>() { "2", "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "", "ReallyComplexLoginNameThatExceedsTheLimitRe" +
-                "allyComplexLoginNameThatExceedsTheLimitReallyComplexLoginNameThatExceedsTheLimit", "ComplexPassword" }),
-            new User(new List<string>() { "3", "", "", "sample_login", "pass" }),
-            new User(new List<string>() { "4", "", "", "S", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
-            new User(new List<string>() { "5", "", "", "User2024", "VeryLongPasswordThatExceedsTheMaximumAllowedLimitVeryLongPasswordThatExceedsTheMaximumAllowedLimit" }),
-        };
+            new User(new List<string>() { "", "", "Te", "TechPassword" }),
+            new User(new List<string>() { "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "",
+                "ReallyComplexLoginNameThatExceedsTheLimitRe" + "allyComplexLoginNameThatExceedsTheLimitReallyComplexLoginNameThatExceedsTheLimit",
+                "ComplexPassword" }),
+            new User(new List<string>() { "", "", "sample_login", "pass" }),
+            new User(new List<string>() { "", "", "S",
+                "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "", "", "User2024",
+                "VeryLongPasswordThatExceedsTheMaximumAllowedLimitVeryLongPasswordThatExceedsTheMaximumAllowedLimit" }),};
         /// <summary>
         /// Author:Flyagin
         /// TestCase #4
@@ -33,12 +35,14 @@ namespace ATframework3demo.TestCases.Login
         /// <param name="homePage"></param>
         public static void Authorization(ServiceHomePage homePage)
         {
+            int iterator = 0;
             var ThisScreen = homePage
-                    .mainPage
+                    .leftmenu
                     .LogOut();
 
             foreach (var i in TestData)
             {
+                iterator++;
 
                 if (ThisScreen
                     .Login(i)
@@ -46,14 +50,14 @@ namespace ATframework3demo.TestCases.Login
                     .IsMainPage()
                     )
                 {
-                    Log.Error($"Round {i.Id}: Fail " +
+                    Log.Error($"Round {iterator}: Fail " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                     return;
 
                 }
                 else
                 {
-                    Log.Info($"Round {i.Id}: Success ");
+                    Log.Info($"Round {iterator}: Success ");
                 }
 
             }

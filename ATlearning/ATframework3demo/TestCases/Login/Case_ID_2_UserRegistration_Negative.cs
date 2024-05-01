@@ -17,12 +17,12 @@ namespace ATframework3demo.TestCases
         }
         private static List<User> TestData = new List<User>()
         {
-            new User(new List<string>() { "1", "", "", "NoAtSign.com", "12345" }),
-            new User(new List<string>() { "2", "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "вв", "@NoLeadingName.com", "123456" }),
-            new User(new List<string>() { "3", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "testemail@.", "D", "E" }),
-            new User(new List<string>() { "4", "ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТ", "", "double@@double.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
-            new User(new List<string>() { "5", "", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "space in@address.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
-            new User(new List<string>() { "6", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "missingdomain@.com", "EEEEEE" })
+            new User(new List<string>() {  "", "", "NoAtSign.com", "12345" }),
+            new User(new List<string>() {  "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "вв", "@NoLeadingName.com", "123456" }),
+            new User(new List<string>() { "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "testemail@.", "D", "E" }),
+            new User(new List<string>() { "ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТ", "", "double@@double.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "space in@address.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "missingdomain@.com", "EEEEEE" })
         };
         /// <summary>
         /// Author:Flyagin
@@ -34,14 +34,16 @@ namespace ATframework3demo.TestCases
         /// <param name="homePage"></param>
         public static void Registration(ServiceHomePage homePage)
         {
+            int iterator = 0;
             var ThisScreen = homePage
-                                .mainPage
+                                .leftmenu
                                 //выход из профиля
                                 .LogOut()
                                 //переход в форму регистрации
                                 .OpenRegistrationForm();
             foreach (var i in TestData)
             {
+                iterator ++;
                 if (!ThisScreen
                         //Ввод Имени
                         .EnterName(i.Name)
@@ -58,13 +60,13 @@ namespace ATframework3demo.TestCases
                         .IsMainPage()
                     )
                 {
-                    Log.Info($"Round {i.Id}: Success " +
+                    Log.Info($"Round {iterator}: Success " +
                         $"\nmessage {new WebItem("//font [@class=\"errortext\"]", "Сообщение об ошибке").InnerText()}");
                 }
                 else
                 {
                     
-                    Log.Error($"Round {i.Id}: Fail \n Сurrent Data: {string.Join("; ", i)} ");
+                    Log.Error($"Round {iterator}: Fail \n Сurrent Data: {string.Join("; ", i)} ");
                     return;
                 }
 
