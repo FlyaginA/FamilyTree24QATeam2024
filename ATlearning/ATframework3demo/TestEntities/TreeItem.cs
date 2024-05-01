@@ -18,12 +18,14 @@ namespace ATframework3demo.TestEntities
                 $" //ancestor::div[@class=\"card\"] ");
             this.Card = new WebItem(Xpath, "Карточка дерева");
             this.header = new WebItem($"{Card.XPathLocator}//header", "Хедер для клика");
-            this.Menu = new WebItem($"{Card.XPathLocator}//div[@class =\"dropdown\"]", "Меню");
+            this.ButtonMenu = new WebItem($"{Card.XPathLocator}//div[@class =\"dropdown\"]", "Меню");
+            this.ContexMenu = new WebItem($"{Card.XPathLocator}//div[@class=\"dropdown-content show\"]","контекстное меню выпадающее");
 
         }
 
         public WebItem header { get; set; }
-        public WebItem Menu { get; set; }
+        public WebItem ButtonMenu { get; set; }
+        public WebItem ContexMenu { get; set; }
         public WebItem Card { get; set; }
         
         public string Title { get; set; }
@@ -39,5 +41,7 @@ namespace ATframework3demo.TestEntities
             header.Click();
             return new TreeEditPage();
         }
+
+
     }
 }
