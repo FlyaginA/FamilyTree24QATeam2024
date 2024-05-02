@@ -24,11 +24,11 @@ namespace ATframework3demo.TestCases.MainPage
 
         private static List<TreeItem> treeItems = new List<TreeItem>()
         {
-            new TreeItem (  "1"),
-            new TreeItem ( "Генеалогия фамилии Романовых - от ранних истоков до последнего русского царя, краткий анализ их влияния на историю Европы"),
-            new TreeItem ( "Ад"),
-            new TreeItem ( "GEASDL"),
-            new TreeItem ( "@@@@@@########_")
+            new TreeItem("Семейное дерево Ивановых"),
+            new TreeItem("Родословная семьи Петровых"),
+            new TreeItem(new string('А', 70)),
+            new TreeItem("История рода Сидоровых на протяжении веков"),
+            new TreeItem("Семейное дерево семьи Ивановых и их наследия сквозь поколения        #")
         };
         private void CreateTreePositive(ServiceHomePage HomePage)
         {

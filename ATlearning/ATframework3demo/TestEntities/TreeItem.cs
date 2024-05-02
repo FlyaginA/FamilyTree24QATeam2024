@@ -13,7 +13,7 @@ namespace ATframework3demo.TestEntities
         public TreeItem(string title)
         {
             this.Title = title;
-            string Xpath = ($"//a [@class =\"card-header-title\" and text()=\"{title}\"]" +
+            string Xpath = ($"//a [@class =\"card-header-title\" and contains(text(),\"{title}\")]" +
                 //карточка дерева
                 $" //ancestor::div[@class=\"card\"] ");
             this.Card = new WebItem(Xpath, "Карточка дерева");
