@@ -32,15 +32,14 @@ namespace ATframework3demo.TestCases.MainPage
         };
         private void CreateTreePositive(ServiceHomePage HomePage)
         {
-            var ThisScreen =
-                HomePage
-                    .mainPage;
+
             int i = 0;
             foreach (var item in treeItems)
             {
                 i++;
                 if (
-                    ThisScreen
+                    HomePage
+                    .mainPage
                     //Ввести название древа
                     .TreeTitleInput(item.Title)
                     //Нажать кнопку "создать дерево

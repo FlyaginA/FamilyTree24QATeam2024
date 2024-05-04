@@ -70,7 +70,11 @@ namespace atFrameWork2.PageObjects
             }    
             else { return false; }
         }
-
+        /// <summary>
+        /// Переключение не объект дерева
+        /// </summary>
+        /// <param name="testTree"></param>
+        /// <returns></returns>
         public TreeItem ChooseTree(TreeItem testTree)
         {
             return testTree;

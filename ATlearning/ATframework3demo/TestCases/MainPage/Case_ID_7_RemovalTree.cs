@@ -17,12 +17,8 @@ namespace ATframework3demo.TestCases.MainPage
         {
             TreeItem NewTree = new TreeItem("New Tree");
 
-            var ThisScreen =
-                HomePage
-                    .mainPage;
-
-            ThisScreen
-
+           HomePage
+                .mainPage
                 // Кнопка действий с деревом (три точки справа сверху)
                 .TreeActionBtn()
 
