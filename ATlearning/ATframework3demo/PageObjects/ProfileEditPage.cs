@@ -138,7 +138,7 @@ namespace ATframework3demo.PageObjects
             if (NameEditField.GetAttribute("value") != user.Name) { Log.Error("Имя не соответствует введенному"); return false; };
             if (SurnameEditField.GetAttribute("value") != user.Surname) { Log.Error("Фамилия не соответствует введенному"); return false; };
             if (EMailEditField.GetAttribute("value") != user.eMail) { Log.Error("Электронная почта не соответствует введенному"); return false; };
-            if (header.ProfileButton.InnerText() != user.eMail) { Log.Error("Электронная почта в хедере не соответствует введенному"); return false; };
+            if (header.ProfileButton.InnerText() != user.Name+' '+user.Surname) { Log.Error("Имя и Фамилия в хедере не соответствует введенному"); return false; };
             //Новая электронная почта и пароль должны обеспечивать успешную авторизацию на ресурсе
             if (
                 leftmenu
