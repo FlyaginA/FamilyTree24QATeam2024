@@ -13,7 +13,7 @@ namespace ATframework3demo.TestCases.EditProfilePage
             return caseCollection;
         }
         
-        User TestUser = new User(new List<string>() {"JohnИванDoe", "Алексеева", "validationSample4@test.me", "complex_password_sample" });
+        
         
         /// <summary>
         /// Тест 15 17 19
@@ -25,23 +25,24 @@ namespace ATframework3demo.TestCases.EditProfilePage
         /// <exception cref="NotImplementedException"></exception>
         private void ProfileEditScript(ServiceHomePage homePage)
         {
+            User TestUser = new User(new List<string>() { "JohnИванDoe", "Алексеева", "validationSample4@test.me", "complex_password_sample" });
             List<User> TestUsers = new List<User>()
-        {
-            new User(new List<string>() {"Ал", "Ли", "a@b.cd", "abcdef"}),
-            new User(new List<string>() {"Alex", "Brown", "example@mail.com", "123456"}),
-            new User(new List<string>() {"Елизавета", "Тейлор", "name.lastname@test.com", "******"}),
-            new User(new List<string>() {"Максимилиан", "Шварценеггер", "1234567890abcdefghijklmnoprstuvzxy@testmail.com", "abcdefg"}),
-            new User(new List<string>() {"Алиса", "Мартинес", "long.name.surname.middle.name.surname@longdomainname.com", "1234567"}),
-            new User(new List<string>() {"Джейк", "Джонсон", "random.email@domain.co", "*******"}),
-            TestUser
-        };
+            {
+                new User(new List<string>() {"Ал", "Ли", "a@b.cd", "abcdef"}),
+                new User(new List<string>() {"Alex", "Brown", "example@mail.com", "123456"}),
+                new User(new List<string>() {"Елизавета", "Тейлор", "name.lastname@test.com", "******"}),
+                new User(new List<string>() {"Максимилиан", "Шварценеггер", "1234567890abcdefghijklmnoprstuvzxy@testmail.com", "abcdefg"}),
+                new User(new List<string>() {"Алиса", "Мартинес", "long.name.surname.middle.name.surname@longdomainname.com", "1234567"}),
+                new User(new List<string>() {"Джейк", "Джонсон", "random.email@domain.co", "*******"}),
+                TestUser
+            };
             int i = 0;
             homePage.leftmenu.LogOut().Login(TestUser);
             foreach (var user in TestUsers)
             {
                 i++;
                  if
-                (
+                 (
                     homePage
                     .header
                     //открытие страницы редактирования профиля
@@ -59,11 +60,11 @@ namespace ATframework3demo.TestCases.EditProfilePage
                     .SaveChanges()
                     //Проверка внесения изменений
                     .AssertChangeProfile(user)
-                )
-                {
+                 )
+                 {
                     Log.Info($"Round {i} : Success");
-                }
-                else { Log.Error($"Round {i}: was Fail"); }
+                 }
+                 else { Log.Error($"Round {i}: was Fail"); }
                 
             }
             //вернемся к исходному состоянию

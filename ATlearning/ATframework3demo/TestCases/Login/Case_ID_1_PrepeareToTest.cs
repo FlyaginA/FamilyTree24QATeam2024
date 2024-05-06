@@ -18,7 +18,7 @@ namespace ATframework3demo.TestCases
             return caseCollection;
         }
 
-        private static List<User> TestData = new List<User>
+        private static List<User> TestUsers = new List<User>
         {
             new User(new List<string>() {  "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
             new User(new List<string>() {  "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
@@ -44,7 +44,7 @@ namespace ATframework3demo.TestCases
         public static void Registration(ServiceHomePage homePage) 
         {
             int iterator = 0;
-            foreach (var i in TestData)
+            foreach (var user in TestUsers)
             {
                 iterator ++;
                 if (
@@ -55,13 +55,13 @@ namespace ATframework3demo.TestCases
                         //переход в форму регистрации
                         .OpenRegistrationForm()
                         //Ввод Имени
-                        .EnterName(i.Name)
+                        .EnterName(user.Name)
                         //Ввод Фамилии
-                        .EnterSurname(i.Surname)
+                        .EnterSurname(user.Surname)
                         //Ввод Логина
-                        .EnterLogin(i.eMail)
+                        .EnterLogin(user.eMail)
                         //Ввод Пароля
-                        .EnterPassword(i.Password)
+                        .EnterPassword(user.Password)
                         //Нажатие на кнопку регистрации
                         .RegistrationButton()
                         //проверка что регистрация прошла успешно и мы находимся
