@@ -19,7 +19,7 @@ namespace ATframework3demo.TestCases.MainPage
             return caseCollection;
         }
         
-        private static List<TreeItem> treeItems = new List<TreeItem>()
+        private static List<TreeItem> TreeItems = new List<TreeItem>()
         {
             new TreeItem ( ""),
             new TreeItem ( "    "),
@@ -39,20 +39,20 @@ namespace ATframework3demo.TestCases.MainPage
                 HomePage
                     .mainPage;
             int i = 0;
-            foreach (var item in treeItems)
+            foreach (var Tree in TreeItems)
             {
                 i++;
                 if (
                     ThisScreen
                     //Ввести название древа
-                    .TreeTitleInput(item.Title)
+                    .TreeTitleInput(Tree.Title)
                     //Нажать кнопку "создать дерево
                     .ClickButtonAddNewTree()
                     //проверить наличие объекта дерева на экране
-                    .TreeIsExist(item)
+                    .TreeIsExist(Tree)
                     )
                 {
-                    Log.Error($"Tree with name {item.Title} ");
+                    Log.Error($"Tree with name {Tree.Title} ");
                     
                 }
                 else

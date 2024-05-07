@@ -70,33 +70,14 @@ namespace atFrameWork2.PageObjects
             }    
             else { return false; }
         }
-
+        /// <summary>
+        /// Переключение на объект дерева
+        /// </summary>
+        /// <param name="testTree"></param>
+        /// <returns></returns>
         public TreeItem ChooseTree(TreeItem testTree)
         {
             return testTree;
-        }
-
-        public MainPage TreeActionBtn()
-        {
-            new WebItem("//button[@class='dropbtn']", "Кнопка действий с деревом")
-                .Click();
-
-            return this;
-        }
-
-        public MainPage TreeRemovalBtn()
-        {
-            new WebItem("//*[text()='Удалить дерево']", "Кнопка удаления дерева")
-                .Click();
-
-            return this;
-        }
-
-        public MainPage AlertAction()
-        {
-            WebDriverActions.BrowserAlert(true);
-
-            return this;
         }
     }
 }

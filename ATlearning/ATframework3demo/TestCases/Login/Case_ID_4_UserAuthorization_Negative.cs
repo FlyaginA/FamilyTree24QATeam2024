@@ -3,7 +3,6 @@ using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
-using ATframework3demo.PageObjects.HomePage;
 
 namespace ATframework3demo.TestCases.Login
 {
@@ -16,15 +15,14 @@ namespace ATframework3demo.TestCases.Login
             return caseCollection;
         }
 
-        private static List<User> TestData = new List<User>()
+        private static List<User> TestUsers = new List<User>()
         {
             new User(new List<string>() { "", "", "Te", "TechPassword" }),
-            new User(new List<string>() { "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "",
+            new User(new List<string>() { new string("O"), "",
                 "ReallyComplexLoginNameThatExceedsTheLimitRe" + "allyComplexLoginNameThatExceedsTheLimitReallyComplexLoginNameThatExceedsTheLimit",
                 "ComplexPassword" }),
             new User(new List<string>() { "", "", "sample_login", "pass" }),
-            new User(new List<string>() { "", "", "S",
-                "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
+            new User(new List<string>() { "", "", "S", new string("E") }),
             new User(new List<string>() { "", "", "User2024",
                 "VeryLongPasswordThatExceedsTheMaximumAllowedLimitVeryLongPasswordThatExceedsTheMaximumAllowedLimit" }),};
         /// <summary>
@@ -40,12 +38,12 @@ namespace ATframework3demo.TestCases.Login
                     .leftmenu
                     .LogOut();
 
-            foreach (var i in TestData)
+            foreach (var User in TestUsers)
             {
                 iterator++;
 
                 if (ThisScreen
-                    .Login(i)
+                    .Login(User)
                     .mainPage
                     .IsMainPage()
                     )

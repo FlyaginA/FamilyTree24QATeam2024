@@ -18,18 +18,19 @@ namespace atFrameWork2.PageObjects
         public LoginPage(PortalInfo portal = null):base(portal)
         {
         }
-        /// <summary>
-        /// Вход на ресурс
-        /// </summary>
-        /// <param name="admin"></param>
-        /// <returns></returns>
+        
         public ServiceHomePage OpenService(User admin)
         { 
             WebDriverActions.OpenUri(portalInfo.PortalUri);
             var ServiceHome = Login(admin);
             return ServiceHome;
         }
-       
+
+        /// <summary>
+        /// Вход на ресурс
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
         public ServiceHomePage Login(User admin)
         {
             var emailField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле для ввода логина");

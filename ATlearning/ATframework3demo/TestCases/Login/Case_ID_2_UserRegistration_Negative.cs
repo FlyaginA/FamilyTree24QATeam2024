@@ -3,7 +3,7 @@ using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
-using ATframework3demo.PageObjects.HomePage;
+
 
 namespace ATframework3demo.TestCases
 {
@@ -12,17 +12,17 @@ namespace ATframework3demo.TestCases
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_2_Регистрация(Negative)", homePage => Registration(homePage)));
+            caseCollection.Add(new TestCase("Регистрация(Negative)", homePage => Registration(homePage)));
             return caseCollection;
         }
-        private static List<User> TestData = new List<User>()
+        private static List<User> TestUsers = new List<User>()
         {
             new User(new List<string>() {  "", "", "NoAtSign.com", "12345" }),
-            new User(new List<string>() {  "ОООООООООООООООООООООООООООООООООООООООООООООООООО", "вв", "@NoLeadingName.com", "123456" }),
-            new User(new List<string>() { "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "testemail@.", "D", "E" }),
-            new User(new List<string>() { "ТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТТ", "", "double@@double.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
-            new User(new List<string>() { "", "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "space in@address.com", "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" }),
-            new User(new List<string>() { "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", "", "missingdomain@.com", "EEEEEE" })
+            new User(new List<string>() {  new string('O',50), "вв", "@NoLeadingName.com", "123456" }),
+            new User(new List<string>() { new string('G', 51), "testemail@.", "D", "E" }),
+            new User(new List<string>() { new string('G', 51), "", "double@@double.com", new string('G', 51)}),
+            new User(new List<string>() { "", new string('G', 51), "space in@address.com", new string('G', 51) }),
+            new User(new List<string>() { new string('G', 50), "", "missingdomain@.com", "EEEEEE" })
         };
         /// <summary>
         /// Author:Flyagin
@@ -41,18 +41,18 @@ namespace ATframework3demo.TestCases
                                 .LogOut()
                                 //переход в форму регистрации
                                 .OpenRegistrationForm();
-            foreach (var i in TestData)
+            foreach (var User in TestUsers)
             {
                 iterator ++;
                 if (!ThisScreen
                         //Ввод Имени
-                        .EnterName(i.Name)
+                        .EnterName(User.Name)
                         //Ввод Фамилии
-                        .EnterSurname(i.Surname)
+                        .EnterSurname(User.Surname)
                         //Ввод Логина
-                        .EnterLogin(i.eMail)
+                        .EnterLogin(User.eMail)
                         //Ввод Пароля
-                        .EnterPassword(i.Password)
+                        .EnterPassword(User.Password)
                         //Нажатие на кнопку регистрации
                         .RegistrationButton()
                         //проверка что регистрация прошла успешно и мы находимся
@@ -66,7 +66,7 @@ namespace ATframework3demo.TestCases
                 else
                 {
                     
-                    Log.Error($"Round {iterator}: Fail \n Сurrent Data: {string.Join("; ", i)} ");
+                    Log.Error($"Round {iterator}: Fail \n Сurrent Data: {string.Join("; ", User)} ");
                     return;
                 }
 

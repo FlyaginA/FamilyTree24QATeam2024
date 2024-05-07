@@ -14,11 +14,11 @@ namespace ATframework3demo.TestCases
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_1_PrepeareToTest", homePage => Registration(homePage)));
+            caseCollection.Add(new TestCase("Подготовительный тест(регистрация)", homePage => Registration(homePage)));
             return caseCollection;
         }
 
-        private static List<User> TestData = new List<User>
+        private static List<User> TestUsers = new List<User>
         {
             new User(new List<string>() {  "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
             new User(new List<string>() {  "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
@@ -44,7 +44,7 @@ namespace ATframework3demo.TestCases
         public static void Registration(ServiceHomePage homePage) 
         {
             int iterator = 0;
-            foreach (var i in TestData)
+            foreach (var User in TestUsers)
             {
                 iterator ++;
                 if (
@@ -55,13 +55,13 @@ namespace ATframework3demo.TestCases
                         //переход в форму регистрации
                         .OpenRegistrationForm()
                         //Ввод Имени
-                        .EnterName(i.Name)
+                        .EnterName(User.Name)
                         //Ввод Фамилии
-                        .EnterSurname(i.Surname)
+                        .EnterSurname(User.Surname)
                         //Ввод Логина
-                        .EnterLogin(i.eMail)
+                        .EnterLogin(User.eMail)
                         //Ввод Пароля
-                        .EnterPassword(i.Password)
+                        .EnterPassword(User.Password)
                         //Нажатие на кнопку регистрации
                         .RegistrationButton()
                         //проверка что регистрация прошла успешно и мы находимся

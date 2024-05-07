@@ -27,7 +27,7 @@ namespace ATframework3demo.TestCases.TreeEditingPage
         /// <param name="homePage"></param>
         public void NodeEditPositive(ServiceHomePage homePage)
         {
-            List<NodeItem> TestData = new List<NodeItem>
+            List<NodeItem> TestNodes = new List<NodeItem>
             {
                 //1
                 new NodeItem("Анна","Смирнова","01.01.1900","31.12.1950","Male","50","150","Without education",true),
@@ -55,7 +55,7 @@ namespace ATframework3demo.TestCases.TreeEditingPage
 
 
             int i = 0;
-            foreach (NodeItem Node in TestData)
+            foreach (NodeItem Node in TestNodes)
             {
                 i++;
                 if (
@@ -89,7 +89,7 @@ namespace ATframework3demo.TestCases.TreeEditingPage
                 }
                 else
                 {
-                    Log.Error($"Round {i}: Fail \n Сurrent Data: {string.Join("; ", TestData)} ");
+                    Log.Error($"Round {i}: Fail \n Сurrent Data: {string.Join("; ", TestNodes)} ");
                     return;
                 }
                 //подготовка к следующему кругу

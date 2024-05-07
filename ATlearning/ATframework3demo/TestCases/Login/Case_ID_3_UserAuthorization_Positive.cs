@@ -3,7 +3,7 @@ using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
-using ATframework3demo.PageObjects.HomePage;
+
 
 namespace ATframework3demo.TestCases.Login
 {
@@ -12,11 +12,11 @@ namespace ATframework3demo.TestCases.Login
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_3_Авторизация(Positive)", homePage => Authorization(homePage)));
+            caseCollection.Add(new TestCase("Авторизация(Positive)", homePage => Authorization(homePage)));
             return caseCollection;
         }
 
-        private static List<User> TestData = new List<User>
+        private static List<User> TestUsers = new List<User>
         {
             new User(new List<string>() { "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),
             new User(new List<string>() { "John Doe", "Петров", "uniqueUser2@mail.net", "technology2024" }),
@@ -42,14 +42,14 @@ namespace ATframework3demo.TestCases.Login
         public static void Authorization(ServiceHomePage homePage)
         {
             int iterator = 0;
-            foreach (var i in TestData)
+            foreach (var User in TestUsers)
             {
                 iterator++; 
                 if (
                 homePage
                     .leftmenu
                     .LogOut()
-                    .Login(i)
+                    .Login(User)
                     .mainPage
                     .IsMainPage()
                     )

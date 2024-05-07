@@ -15,15 +15,5 @@ namespace atFrameWork2.PageObjects
         public LeftMenu leftmenu => new LeftMenu();
         public Header header => new Header();
         public MainPage mainPage => new MainPage();
-        /*
-        public PortalLeftMenu LeftMenu => new PortalLeftMenu();
-        public NewsPage NewsPage => new NewsPage();
-
-        public MyDrive MyDrive => new MyDrive();
-        */
-
     }
-
-
-
 }
