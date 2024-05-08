@@ -56,8 +56,8 @@ namespace ATframework3demo.PageObjects.TreePage
             }
             if(nodeEditPage.WeightField.GetAttribute("value") != testNode.Weight) { Log.Error("Значение 'Вес' не соответствует заданному"); res = false; };
             if(nodeEditPage.HeightField.GetAttribute("value") != testNode.Height) { Log.Error("Значение 'Рост' не соответствует заданному"); res = false; };
-            if (nodeEditPage.GetGender() != testNode.Gender.ToLower()) { Log.Error("Значение поля 'gender' не соответствует заданному"); res = false; };
-            if (nodeEditPage.GetEducationLevel() != testNode.EducationLvl.ToLower()) { Log.Error("Значение поля 'EducationLevel' не соответствует заданному"); res = false; };
+            if (nodeEditPage.GetGender() != testNode.Gender) { Log.Error("Значение поля 'gender' не соответствует заданному"); res = false; };
+            if (nodeEditPage.GetEducationLevel() != testNode.EducationLvl) { Log.Error("Значение поля 'EducationLevel' не соответствует заданному"); res = false; };
             if (nodeEditPage.GetFlagValue() != testNode.ImportantField) { Log.Error("Значение Flag не соответствует заданному"); res = false; };
             return res;
         }

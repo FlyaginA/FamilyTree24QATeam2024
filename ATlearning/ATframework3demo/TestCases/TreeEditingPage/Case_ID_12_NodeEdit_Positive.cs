@@ -2,7 +2,6 @@
 using atFrameWork2.BaseFramework;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
-using ATframework3demo.PageObjects.HomePage;
 using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.TreeEditingPage
@@ -14,7 +13,7 @@ namespace ATframework3demo.TestCases.TreeEditingPage
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_12_Редактирование нод(Positive)", (ServiceHomePage HomePage) => NodeEditPositive(HomePage)));
+            caseCollection.Add(new TestCase("Редактирование нод(Positive)", (ServiceHomePage HomePage) => NodeEditPositive(HomePage)));
             return caseCollection;
         }
 
@@ -30,17 +29,17 @@ namespace ATframework3demo.TestCases.TreeEditingPage
             List<NodeItem> TestNodes = new List<NodeItem>
             {
                 //1
-                new NodeItem("Анна","Смирнова","01.01.1900","31.12.1950","Male","50","150","Without education",true),
+                new NodeItem("Анна","Смирнова","01.01.1900","31.12.1950","Мужской","50","150","Без образования",true),
                 //2
-                new NodeItem("Александра","Константинопольская","29.02.1920","01.12.1980","Female","65","165","School",false),
+                new NodeItem("Александра","Константинопольская","29.02.1920","01.12.1980","Женский","65","165","Школьное",false),
                 //3
-                new NodeItem("Jean-Pierre", "Dupont", "31.07.1970", "31.07.2040", "Male", "75", "175", "Secondary", false),
+                new NodeItem("Jean-Pierre", "Dupont", "31.07.1970", "31.07.2040", "Мужской", "75", "175", "Среднее", false),
                 //4
-                new NodeItem("Анна-Мария","Иванова-Петрова","30.06.1980","30.06.2050","Female","85","185","Higher",true),
+                new NodeItem("Анна-Мария","Иванова-Петрова","30.06.1980","30.06.2050","Женский","85","185","Высшее",true),
                 //5
-                new NodeItem("D'Artagnan","de la Vallière","01.04.2000","31.12.2077","Male","95","195","School",true),
+                new NodeItem("D'Artagnan","de la Vallière","01.04.2000","31.12.2077","Мужской","95","195","Школьное",true),
                 //6
-                new NodeItem("Ян-Поль", "Д'Артаньян", "15.08.2010", "15.08.2080", "Female", "105", "205", "Higher", false),
+                new NodeItem("Ян-Поль", "Д'Артаньян", "15.08.2010", "15.08.2080", "Женский", "105", "205", "Высшее", false),
             };
             TreeItem TestTree = new TreeItem("TestTree" + DateTime.Now);
             var ThisScreen =

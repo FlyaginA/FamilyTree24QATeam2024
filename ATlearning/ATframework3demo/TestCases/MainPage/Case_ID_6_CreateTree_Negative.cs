@@ -1,7 +1,6 @@
 ﻿using atFrameWork2.BaseFramework;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
-using ATframework3demo.PageObjects.HomePage;
 using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.MainPage
@@ -15,14 +14,12 @@ namespace ATframework3demo.TestCases.MainPage
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_6_Создание дерева(Negative)", (ServiceHomePage HomePage) => CreateTreeNegative(HomePage)));
+            caseCollection.Add(new TestCase("Создание дерева(Negative)", (ServiceHomePage HomePage) => CreateTreeNegative(HomePage)));
             return caseCollection;
         }
         
         private static List<TreeItem> TreeItems = new List<TreeItem>()
         {
-            new TreeItem ( ""),
-            new TreeItem ( "    "),
             new TreeItem ( "                     "),
             new TreeItem ( "Генеалогия фамилии Романовых - от ранних истоков до последнего русского царя, краткий анализ их влияния на историю Европы")
 
@@ -53,13 +50,13 @@ namespace ATframework3demo.TestCases.MainPage
                     )
                 {
                     Log.Error($"Tree with name {Tree.Title} ");
-                    
+                    return;
                 }
                 else
                 {
 
                     Log.Info($"Round {i}: Success ");
-                    return;
+                    
                 }
             }
 

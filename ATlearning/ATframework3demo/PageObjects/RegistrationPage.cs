@@ -9,6 +9,9 @@ using System.Xml.Linq;
 
 namespace atFrameWork2.PageObjects
 {
+    /// <summary>
+    /// Страница регистрации
+    /// </summary>
     public class RegistrationPage
     {
         public static string NameOfObject = "RegistrationPage";

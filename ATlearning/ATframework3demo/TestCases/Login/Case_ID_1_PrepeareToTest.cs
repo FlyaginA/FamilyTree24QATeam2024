@@ -4,11 +4,10 @@ using atFrameWork2.PageObjects;
 using atFrameWork2.SeleniumFramework;
 using atFrameWork2.TestEntities;
 using ATframework3demo.PageObjects;
-using ATframework3demo.PageObjects.HomePage;
 
 namespace ATframework3demo.TestCases
 {
-    public class Case_ID_1_PrepeareToTest : CaseCollectionBuilder
+    public class Case_ID_1_PrepeareToTest :CaseCollectionBuilder
     {
         
         protected override List<TestCase> GetCases()
@@ -17,7 +16,7 @@ namespace ATframework3demo.TestCases
             caseCollection.Add(new TestCase("Подготовительный тест(регистрация)", homePage => Registration(homePage)));
             return caseCollection;
         }
-
+        
         private static List<User> TestUsers = new List<User>
         {
             new User(new List<string>() {  "Иван", "Иванов", "testEmail1@example.com", "mypassword123" }),

@@ -68,7 +68,10 @@ namespace atFrameWork2.PageObjects
             {
                 return true;
             }    
-            else { return false; }
+            else 
+            { 
+                return false; 
+            }
         }
         /// <summary>
         /// Переключение на объект дерева

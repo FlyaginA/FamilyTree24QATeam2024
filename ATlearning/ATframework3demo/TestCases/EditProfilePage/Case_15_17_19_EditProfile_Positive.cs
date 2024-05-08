@@ -9,7 +9,7 @@ namespace ATframework3demo.TestCases.EditProfilePage
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_15_17_19_Сценарий_Изменений профиля", homePage => ProfileEditScript(homePage)));
+            caseCollection.Add(new TestCase("Сценарий Изменений профиля", homePage => ProfileEditScript(homePage)));
             return caseCollection;
         }
         
@@ -25,16 +25,16 @@ namespace ATframework3demo.TestCases.EditProfilePage
         /// <exception cref="NotImplementedException"></exception>
         private void ProfileEditScript(ServiceHomePage homePage)
         {
-            List<User> TestUsers = new List<User>()
-        {
-            new User(new List<string>() {"Ал", "Ли", "a@b.cd", "abcdef"}),
-            new User(new List<string>() {"Alex", "Brown", "example@mail.com", "123456"}),
-            new User(new List<string>() {"Елизавета", "Тейлор", "name.lastname@test.com", "******"}),
-            new User(new List<string>() {"Максимилиан", "Шварценеггер", "1234567890abcdefghijklmnoprstuvzxy@testmail.com", "abcdefg"}),
-            new User(new List<string>() {"Алиса", "Мартинес", "long.name.surname.middle.name.surname@longdomainname.com", "1234567"}),
-            new User(new List<string>() {"Джейк", "Джонсон", "random.email@domain.co", "*******"}),
-            TestUser
-        };
+                List<User> TestUsers = new List<User>()
+            {
+                new User(new List<string>() {"Ал", "Ли", "a@b.cd", "abcdef"}),
+                new User(new List<string>() {"Alex", "Brown", "example@mail.com", "123456"}),
+                new User(new List<string>() {"Елизавета", "Тейлор", "name.lastname@test.com", "******"}),
+                new User(new List<string>() {"Максимилиан", "Шварценеггер", "1234567890abcdefghijklmnoprstuvzxy@testmail.com", "abcdefg"}),
+                new User(new List<string>() {"Алиса", "Мартинес", "long.name.surname.middle.name.surname@longdomainname.com", "1234567"}),
+                new User(new List<string>() {"Джейк", "Джонсон", "random.email@domain.co", "*******"}),
+                TestUser
+            };
             int i = 0;
             homePage.leftmenu.LogOut().Login(TestUser);
             foreach (var user in TestUsers)

@@ -16,7 +16,7 @@ namespace ATframework3demo.PageObjects.TreePage
         public WebItem DeathDateField = new WebItem("//input[@data-binding = \"deathDate\"]", "Поле ввода даты смерти");
         public WebItem GenderField = new WebItem("//select[@data-binding = \"gender\"]", "Список с выбором гендера");
         public WebItem ImportantFlag = new WebItem("//span[@class=\"bft-checkbox-checkmark\"]", "Флажок important");
-        public WebItem SaveButton = new WebItem("//button[text()=\"Save\"]", "Кнопка 'Save'");
+        public WebItem SaveButton = new WebItem("//button[@type=\"submit\"]", "Кнопка 'Сохранить'");
         public WebItem WeightField = new WebItem("//input[@data-binding = \"weight\"]","Поле Вес");
         public WebItem HeightField = new WebItem("//input[@data-binding = \"height\"]", "Поле Рост");
         public WebItem EducationLevelField = new WebItem("//select[@data-binding = \"education\"]", "Поле Education level");
@@ -170,7 +170,7 @@ namespace ATframework3demo.PageObjects.TreePage
             string gendervalue = null;
             try
             {
-                gendervalue = new WebItem(GenderField.XPathLocator + "//*[@selected]", "selected value").GetAttribute("value");
+                gendervalue = new WebItem(GenderField.XPathLocator + "//*[@selected]", "selected value").InnerText();
                 
             }
             catch
@@ -189,7 +189,7 @@ namespace ATframework3demo.PageObjects.TreePage
             string EdLvl = null;
             try
             {
-                EdLvl = new WebItem(EducationLevelField.XPathLocator + "//*[@selected]", "selected value").GetAttribute("value");
+                EdLvl = new WebItem(EducationLevelField.XPathLocator + "//*[@selected]", "selected value").InnerText();
             }
             catch
             {

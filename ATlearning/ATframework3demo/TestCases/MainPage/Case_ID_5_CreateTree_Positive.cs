@@ -1,7 +1,6 @@
 ﻿using atFrameWork2.BaseFramework;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.PageObjects;
-using ATframework3demo.PageObjects.HomePage;
 using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.MainPage
@@ -18,7 +17,7 @@ namespace ATframework3demo.TestCases.MainPage
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_5_Создание дерева(Positive)", (ServiceHomePage HomePage) => CreateTreePositive(HomePage)));
+            caseCollection.Add(new TestCase("Создание дерева(Positive)", (ServiceHomePage HomePage) => CreateTreePositive(HomePage)));
             return caseCollection;
         }
 

@@ -3,6 +3,9 @@ using atFrameWork2.SeleniumFramework;
 
 namespace ATframework3demo.PageObjects
 {
+    /// <summary>
+    /// Объект левого меню страницы
+    /// </summary>
     public class LeftMenu
     {
         /// <summary>

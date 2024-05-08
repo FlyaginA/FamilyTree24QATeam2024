@@ -37,7 +37,6 @@ namespace atFrameWork2.PageObjects
             var pwdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле для ввода пароля");
             emailField.ClearValue();
             emailField.SendKeys(admin.eMail);
-            emailField.SendKeys(Keys.Tab);
             pwdField.ClearValue();
             pwdField.SendKeys(admin.Password, logInputtedText: false);
             pwdField.SendKeys(Keys.Enter);

@@ -3,6 +3,9 @@ using atFrameWork2.SeleniumFramework;
 
 namespace ATframework3demo.PageObjects
 {
+    /// <summary>
+    /// Страница редактирования пользовательских данных
+    /// </summary>
     public class ProfileEditPage
     {
         public Header header => new Header();

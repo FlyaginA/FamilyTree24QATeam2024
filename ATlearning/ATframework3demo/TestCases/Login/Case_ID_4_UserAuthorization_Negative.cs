@@ -11,7 +11,7 @@ namespace ATframework3demo.TestCases.Login
         protected override List<TestCase> GetCases()
         {
             var caseCollection = new List<TestCase>();
-            caseCollection.Add(new TestCase("ID_4_Авторизация(Negative)", homePage => Authorization(homePage)));
+            caseCollection.Add(new TestCase("Авторизация(Negative)", homePage => Authorization(homePage)));
             return caseCollection;
         }
 
